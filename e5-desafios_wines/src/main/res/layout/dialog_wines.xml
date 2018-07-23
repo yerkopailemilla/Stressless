@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:padding="25dp"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="15dp"/>
+
+
+    <EditText
+        android:id="@+id/brandEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Nombre del vino"
+        android:padding="8dp"
+        android:background="@drawable/bg_white_bordeless_primary"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="15dp"/>
+
+    <EditText
+        android:id="@+id/typeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Tipo de vino"
+        android:padding="8dp"
+        android:background="@drawable/bg_white_bordeless_primary"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="15dp"/>
+
+    <EditText
+        android:id="@+id/yearsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Años de conserva"
+        android:inputType="number"
+        android:padding="8dp"
+        android:background="@drawable/bg_white_bordeless_primary"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="10dp"/>
+
+    <Button
+        android:id="@+id/saveWineButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar vino"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/colorWhite"
+        />
+
+</LinearLayout>
