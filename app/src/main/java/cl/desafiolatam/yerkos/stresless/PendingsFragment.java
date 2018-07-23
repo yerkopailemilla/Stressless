@@ -6,19 +6,26 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import cl.desafiolatam.yerkos.stresless.adapters.PendingsAdapter;
+import cl.desafiolatam.yerkos.stresless.adapters.WinesAdapter;
+import cl.desafiolatam.yerkos.stresless.intefaces.PendingClickListener;
 import cl.desafiolatam.yerkos.stresless.models.Pending;
+import cl.desafiolatam.yerkos.stresless.models.Wine;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class PendingsFragment extends Fragment implements PendingClickListener{
 
-    public MainActivityFragment() {
+    private PendingsAdapter adapter;
+
+    public PendingsFragment() {
     }
 
     @Override
@@ -37,14 +44,19 @@ public class MainActivityFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         pendingRecyclerView.setLayoutManager(linearLayoutManager);
 
-        for (int i = 0; i<20; i++){
-            Pending pending = new Pending();
-            pending.setName(String.valueOf(i));
-            pending.setDone(false);
-            pending.save();
-        }
+        adapter = new PendingsAdapter(this);
+        pendingRecyclerView.setAdapter(adapter);
+    }
 
-        PendingsAdapter pendingsAdapter = new PendingsAdapter();
-        pendingRecyclerView.setAdapter(pendingsAdapter);
+    public void updateList(Pending pending){
+        adapter.udpdate(pending);
+    }
+
+    @Override
+    public void clickedId(long id) {
+        Pending pending = Pending.findById(Pending.class, id);
+        String name = pending.getName().toString();
+
+        Toast.makeText(getContext(), "Nombre es: " + name, Toast.LENGTH_SHORT).show();
     }
 }

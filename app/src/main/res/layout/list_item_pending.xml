@@ -21,3 +21,33 @@
         android:layout_gravity="center_vertical"/>
 
 </LinearLayout>
+
+<!--
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:background="@drawable/bg_white_underline_black"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/brandTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Santa Helena" />
+
+    <TextView
+        android:id="@+id/yearsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8" />
+
+    <TextView
+        android:id="@+id/typeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sauvignon "/>
+
+</LinearLayout>
+-->

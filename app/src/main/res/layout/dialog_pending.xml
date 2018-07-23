@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:padding="25dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/pendingEditText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="45dp"
+        android:inputType="text"
+        android:padding="8dp"
+        android:background="@drawable/bg_white_bordeless_primary"/>
+
+    <ImageButton
+        android:id="@+id/savePendingButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:scaleType="centerCrop"
+        android:backgroundTint="@color/colorWhite"
+        android:src="@mipmap/icon_save_black_18dp"/>
+
+</LinearLayout>
