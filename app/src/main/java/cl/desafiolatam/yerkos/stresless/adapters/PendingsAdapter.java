@@ -43,30 +43,28 @@ public class PendingsAdapter extends RecyclerView.Adapter<PendingsAdapter.Pendin
         holder.pendingCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            int auxPosition = holder.getAdapterPosition();
-                            Pending auxPending = pendings.get(auxPosition);
-                            auxPending.setDone(true);
-                            auxPending.save();
-                            pendings.remove(auxPosition);
-                            notifyItemRemoved(auxPosition);
-                        }
-                    }, 500);
-                }
-
+            if (isChecked){
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int auxPosition = holder.getAdapterPosition();
+                        Pending auxPending = pendings.get(auxPosition);
+                        auxPending.setDone(true);
+                        auxPending.save();
+                        pendings.remove(auxPosition);
+                        notifyItemRemoved(auxPosition);
+                    }
+                }, 500);
+            }
             }
         });
 
         holder.pendingTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int auxPosition = holder.getAdapterPosition();
-                Pending auxPending = pendings.get(auxPosition);
-                clickListener.clickedId(auxPending.getId());
-
+            int auxPosition = holder.getAdapterPosition();
+            Pending auxPending = pendings.get(auxPosition);
+            clickListener.clickedId(auxPending.getId());
             }
         });
 
@@ -77,8 +75,15 @@ public class PendingsAdapter extends RecyclerView.Adapter<PendingsAdapter.Pendin
         return pendings.size();
     }
 
-    public void udpdate(Pending pending){
+    /*public void udpdate(Pending pending){
         pendings.add(pending);
+        notifyDataSetChanged();
+    }*/
+
+    public void updateByName(String name){
+        List<Pending> byName = new Queries().byName(name);
+        pendings.clear();
+        pendings.addAll(byName);
         notifyDataSetChanged();
     }
 

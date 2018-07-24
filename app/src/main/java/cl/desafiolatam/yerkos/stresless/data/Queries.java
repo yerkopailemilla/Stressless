@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cl.desafiolatam.yerkos.stresless.models.Pending;
-import cl.desafiolatam.yerkos.stresless.models.Wine;
 
 public class Queries {
 
@@ -21,16 +20,25 @@ public class Queries {
         return pendings;
     }
 
-    public List<Wine> wines(){
-
-        List<Wine> wines = new ArrayList<>();
-        List<Wine> wineList = Wine.listAll(Wine.class);
-
-        if(wineList != null && wineList.size() > 0){
-            wines.addAll(wineList);
+    public List<String> names(){
+        List<String> names = new ArrayList<>();
+        List<Pending> pendings = pendings();
+        for (int i = 0; i < pendings.size(); i++) {
+            names.add(pendings.get(i).getName());
         }
 
-        return wines;
+        return names;
+    }
+
+    public List<Pending> byName(String name){
+        List<Pending> pendings = new ArrayList<>();
+        String query = "done = 0 AND name LIKE '%"+name+"%'";
+        List<Pending> pendingList = Pending.find(Pending.class, query);
+        if (pendingList != null && pendingList.size() > 0){
+            pendings.addAll(pendingList);
+        }
+
+        return pendings;
     }
 
 }

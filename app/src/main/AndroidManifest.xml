@@ -17,7 +17,7 @@
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="cl.desafiolatam.yerkos.stresless.models" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.PendingsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

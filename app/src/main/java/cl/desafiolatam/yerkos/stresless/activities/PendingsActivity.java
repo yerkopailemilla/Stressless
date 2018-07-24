@@ -1,4 +1,4 @@
-package cl.desafiolatam.yerkos.stresless;
+package cl.desafiolatam.yerkos.stresless.activities;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -12,17 +12,21 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import cl.desafiolatam.yerkos.stresless.fragments.PendingsFragment;
+import cl.desafiolatam.yerkos.stresless.R;
+import cl.desafiolatam.yerkos.stresless.intefaces.SearchListener;
 import cl.desafiolatam.yerkos.stresless.models.Pending;
 
-public class MainActivity extends AppCompatActivity {
+public class PendingsActivity extends AppCompatActivity implements SearchListener{
 
     private PendingsFragment pendingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pendings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog dialog = new Dialog(MainActivity.this);
+                final Dialog dialog = new Dialog(PendingsActivity.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_pending);
 
@@ -47,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
                             pending.setName(name);
                             pending.setDone(false);
                             pending.save();
-
-                            pendingsFragment.updateList(pending);
+//                            pendingsFragment.updateList(pending);
+                            pendingsFragment.updateListByName(name);
                         }
                         dialog.dismiss();
                     }
@@ -61,24 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void searched(String name) {
+        pendingsFragment.updateListByName(name);
     }
 }

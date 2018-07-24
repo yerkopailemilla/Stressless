@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".PendingsFragment"
-    tools:showIn="@layout/activity_main">
+    tools:context=".fragments.PendingsFragment"
+    tools:showIn="@layout/activity_pendings">
 
     <LinearLayout
         android:layout_width="match_parent"

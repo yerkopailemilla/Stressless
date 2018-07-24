@@ -1,4 +1,4 @@
-package cl.desafiolatam.yerkos.stresless;
+package cl.desafiolatam.yerkos.stresless.fragments;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -6,17 +6,15 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import cl.desafiolatam.yerkos.stresless.R;
 import cl.desafiolatam.yerkos.stresless.adapters.PendingsAdapter;
-import cl.desafiolatam.yerkos.stresless.adapters.WinesAdapter;
 import cl.desafiolatam.yerkos.stresless.intefaces.PendingClickListener;
 import cl.desafiolatam.yerkos.stresless.models.Pending;
-import cl.desafiolatam.yerkos.stresless.models.Wine;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -48,15 +46,18 @@ public class PendingsFragment extends Fragment implements PendingClickListener{
         pendingRecyclerView.setAdapter(adapter);
     }
 
-    public void updateList(Pending pending){
+    /*public void updateList(Pending pending){
         adapter.udpdate(pending);
+    }*/
+
+    public void updateListByName(String name){
+        adapter.updateByName(name);
     }
 
     @Override
     public void clickedId(long id) {
         Pending pending = Pending.findById(Pending.class, id);
-        String name = pending.getName().toString();
-
-        Toast.makeText(getContext(), "Nombre es: " + name, Toast.LENGTH_SHORT).show();
+        String name = pending.getName();
+        Toast.makeText(getContext(), "Esta tarea pendiente se llama: " + name, Toast.LENGTH_SHORT).show();
     }
 }
