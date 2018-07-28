@@ -41,4 +41,9 @@ public class Queries {
         return pendings;
     }
 
+    public Pending byId(long id){
+        Pending pending = Pending.findById(Pending.class, id);
+        return pending;
+    }
+
 }

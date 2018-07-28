@@ -1,5 +1,6 @@
 package cl.desafiolatam.yerkos.stresless.fragments;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import cl.desafiolatam.yerkos.stresless.R;
+import cl.desafiolatam.yerkos.stresless.activities.DetailActivity;
 import cl.desafiolatam.yerkos.stresless.adapters.PendingsAdapter;
 import cl.desafiolatam.yerkos.stresless.intefaces.PendingClickListener;
 import cl.desafiolatam.yerkos.stresless.models.Pending;
@@ -21,6 +23,7 @@ import cl.desafiolatam.yerkos.stresless.models.Pending;
  */
 public class PendingsFragment extends Fragment implements PendingClickListener{
 
+    public static final String PENDING_ID = "cl.desafiolatam.yerkos.stresless.fragments.KEY.PENDING_ID";
     private PendingsAdapter adapter;
 
     public PendingsFragment() {
@@ -56,8 +59,8 @@ public class PendingsFragment extends Fragment implements PendingClickListener{
 
     @Override
     public void clickedId(long id) {
-        Pending pending = Pending.findById(Pending.class, id);
-        String name = pending.getName();
-        Toast.makeText(getContext(), "Esta tarea pendiente se llama: " + name, Toast.LENGTH_SHORT).show();
+        Intent goToDetail = new Intent(getContext(), DetailActivity.class);
+        goToDetail.putExtra(PENDING_ID, id);
+        startActivity(goToDetail);
     }
 }
