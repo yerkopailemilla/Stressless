@@ -75,10 +75,10 @@ public class PendingsAdapter extends RecyclerView.Adapter<PendingsAdapter.Pendin
         return pendings.size();
     }
 
-    /*public void udpdate(Pending pending){
+    public void udpdate(Pending pending){
         pendings.add(pending);
         notifyDataSetChanged();
-    }*/
+    }
 
     public void updateByName(String name){
         List<Pending> byName = new Queries().byName(name);

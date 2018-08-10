@@ -49,9 +49,9 @@ public class PendingsFragment extends Fragment implements PendingClickListener{
         pendingRecyclerView.setAdapter(adapter);
     }
 
-    /*public void updateList(Pending pending){
+    public void updateList(Pending pending){
         adapter.udpdate(pending);
-    }*/
+    }
 
     public void updateListByName(String name){
         adapter.updateByName(name);
